@@ -9,7 +9,7 @@ body,
 }
 
 #root {
-  width: 1410px;
+  width: 1300px;
 }
 
 /*Slide-menu*/
@@ -17,9 +17,10 @@ body,
   background-color: #faf7f0;
   width: 100%;
   display: grid;
-  gap: 40px;
+  gap: 30px;
   grid-template-columns: 1fr 2fr 4fr 1fr;
   align-items: center;
+  justify-items: center;
   padding: 10px;
 }
 
@@ -27,10 +28,6 @@ body,
 .icon-name-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5px;
-}
-
-.icon {
 }
 
 .name h1 {
@@ -58,10 +55,8 @@ body,
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
-  height: 25px;
-  width: 100%;
-  padding: 5px 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  align-items: center;
 }
 
 .search-input {
@@ -106,7 +101,7 @@ body,
   grid-column: 3 / span 1;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  column-gap: 50px;
+  column-gap: 20px;
 }
 
 .menu {
@@ -132,6 +127,9 @@ body,
 }
 
 /*Avatar*/
+.GuestAvatar {
+  margin-right: 0;
+}
 .GuestAvatar img {
   border-radius: 25%;
   height: 56px;

@@ -64,7 +64,14 @@ function SlideMenu() {
 function Menu({ icon, text }) {
   return (
     <button className="menu">
-      <img src={icon} />
+      <img
+        src={icon}
+        style={
+          text === "Cart"
+            ? { height: "22px", width: "22px" }
+            : { height: "20px", width: "20px" }
+        }
+      />
       <p>{text}</p>
     </button>
   );
