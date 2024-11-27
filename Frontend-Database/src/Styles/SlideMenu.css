@@ -126,6 +126,10 @@ body,
   color: #464255;
 }
 
+.selected p {
+  color: #b17457;
+}
+
 /*Avatar*/
 .GuestAvatar {
   margin-right: 0;
