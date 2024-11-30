@@ -3,12 +3,6 @@
 
 body,
 #root {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-#root {
   width: 1300px;
 }
 
@@ -17,11 +11,10 @@ body,
   background-color: #faf7f0;
   width: 100%;
   display: grid;
-  gap: 30px;
-  grid-template-columns: 1fr 2fr 4fr 1fr;
+
+  grid-template-columns: 1fr 2fr 3fr 1fr;
   align-items: center;
   justify-items: center;
-  padding: 10px;
 }
 
 /*Icon and name*/

@@ -2,11 +2,6 @@ import { useState, useEffect } from "react";
 import "../Styles/SlideMenu.css";
 import logo from "../../public/logo.png";
 import searchIcon from "../../public/searchicon.png";
-import homeMenu from "../../public/home.png";
-import menuMenu from "../../public/menu.png";
-import historyMenu from "../../public/history.png";
-import chatMenu from "../../public/chat.png";
-import walletMenu from "../../public/wallet.png";
 import cartMenu from "../../public/cart.png";
 import placeHolder from "../../public/placeholderavatar.png";
 
