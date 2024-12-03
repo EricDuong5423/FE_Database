@@ -1,0 +1,22 @@
+.icon-name-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.name h1 {
+  margin: 0;
+  font-size: 48px;
+  color: #333333;
+  font-family: "Poppins", sans-serif;
+}
+
+.name h2 {
+  margin: 0;
+  font-size: 18px;
+  font-family: "Baskervville", sans-serif;
+  background: linear-gradient(90deg, #000000 0%, #666666 28.5%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}

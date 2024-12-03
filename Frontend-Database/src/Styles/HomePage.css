@@ -34,4 +34,26 @@ body,
 
 /*Ingredients Description*/
 .ingredients-description {
+  padding: 20px;
+}
+.ingredients-description h2 {
+  font-family: "Baskervville", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 100px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
+  margin: 0;
+}
+
+.ingredients-description p {
+  font-family: "Baskervville";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 39px;
+  text-align: center;
+
+  color: #4a4947;
 }

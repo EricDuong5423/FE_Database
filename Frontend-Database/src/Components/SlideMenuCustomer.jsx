@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../Styles/SlideMenu.css";
 import logo from "../../public/logo.png";
 import searchIcon from "../../public/searchicon.png";
