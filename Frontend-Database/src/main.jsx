@@ -9,7 +9,6 @@ ReactDOM.createRoot(root).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/Register" element={<MainLogo />} />
     </Routes>
   </BrowserRouter>
 );
