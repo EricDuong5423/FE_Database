@@ -1,6 +1,9 @@
 import SlideMenu from "../Components/SlideMenuCustomer";
 import "../Styles/HomePage.css";
 import pizzaImage from "../../public/pizzaAI.png";
+import ingTomato from "../../public/Tomato.png";
+import ingBasil from "../../public/Basil.png";
+import ingCheese from "../../public/Cheese.png";
 
 function HomePage() {
   return (
@@ -15,7 +18,7 @@ function HomePage() {
 
 function TodaySales() {
   return (
-    <div className="today-sales">
+    <div className="today-sales" width="100%">
       <h3>Today's top sales!</h3>
       <p>let's take a look at our best seller!</p>
     </div>
@@ -25,7 +28,37 @@ function TodaySales() {
 function IngredientsDescription() {
   return (
     <div className="ingredients-description">
-      <h3>gifts from mother of nature</h3>
+      <h2>gifts from mother of nature</h2>
+      <p>
+        The perfect trio of basil, tomato, and cheese is a timeless gift from
+        Mother Nature, celebrating harmony in simplicity. Basil, with its
+        fragrant leaves, adds a touch of freshness and a burst of aroma. Juicy,
+        sun-ripened tomatoes offer a balance of sweetness and tang, embodying
+        the essence of summer. Creamy, rich cheese ties it all together,
+        creating a symphony of flavors. Together, they form the foundation of
+        beloved dishes like Caprese salad and classic margherita pizza. This
+        trio not only delights the palate but also symbolizes nature’s
+        abundance, reminding us of the beauty in fresh, wholesome ingredients.
+      </p>
+      <IngredientShowcase />
+    </div>
+  );
+}
+
+function IngredientShowcase() {
+  return (
+    <div className="ingredient-showcase">
+      <IngredientItem id="item-1" imgSrc={ingBasil} />
+      <IngredientItem id="item-2" imgSrc={ingTomato} />
+      <IngredientItem id="item-3" imgSrc={ingCheese} />
+    </div>
+  );
+}
+
+function IngredientItem({ imgSrc, id }) {
+  return (
+    <div className="ingredient-item" id={id}>
+      <img id="ingredient-img" src={imgSrc} height={`${400}px`} width={`${400}px`} />
     </div>
   );
 }
