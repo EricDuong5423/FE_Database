@@ -63,4 +63,8 @@ function IngredientItem({ imgSrc, id }) {
   );
 }
 
+function IngredientsImage() {
+  return <div className="ingredients-image"></div>;
+}
+
 export default HomePage;
