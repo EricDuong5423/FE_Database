@@ -4,11 +4,15 @@ import "../Styles/MainLogo.css";
 function MainLogo() {
   return (
     <div className="main-logo-container">
-      <h1>
-        Pizzaa<span style={{ color: "#B17457" }}>.</span>
-      </h1>
-      <p>In crust - we trust</p>
-      <img src={logo} />
+      <div className="name">
+        <p id="title">
+          Pizzaa<span style={{ color: "#B17457" }}>.</span>
+        </p>
+        <p id="slogan">In crust - we trust</p>
+      </div>
+      <div className="icon">
+        <img src={logo} height={`${136.245}px`} width={`${154.275}px`} />
+      </div>
     </div>
   );
 }

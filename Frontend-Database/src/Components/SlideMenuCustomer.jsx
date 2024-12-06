@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import "../Styles/SlideMenu.css";
+
+// images
 import logo from "../../public/logo.png";
 import searchIcon from "../../public/searchicon.png";
-import cartMenu from "../../public/cart.png";
+import cartIcon from "../../public/cart.png";
 import placeHolder from "../../public/placeholderavatar.png";
 
 const home =
@@ -64,15 +67,10 @@ function SlideMenu() {
     <div className="slide-menu-container">
       <Menu icon={home} text="Home" select={select} setSelect={setSelect} />
       <Menu icon={menu} text="Menu" select={select} setSelect={setSelect} />
-      <Menu
-        icon={history}
-        text="History"
-        select={select}
-        setSelect={setSelect}
-      />
+      <Menu icon={history} text="History" select={select} setSelect={setSelect} />
       <Menu icon={chat} text="Chat" select={select} setSelect={setSelect} />
       <Menu icon={wallet} text="Wallet" select={select} setSelect={setSelect} />
-      <Menu icon={cartMenu} text="Cart" select={select} setSelect={setSelect} />
+      <Menu icon={cartIcon} text="Cart" select={select} setSelect={setSelect} />
     </div>
   );
 }
@@ -82,36 +80,29 @@ function Menu({ icon, text, select, setSelect }) {
     setSelect(text);
   }
   return (
-    <button
-      className={select === text ? "menu selected" : "menu"}
-      onClick={changeMenu}
-    >
-      {text !== "Cart" ? (
-        <svg
-          width="20"
-          height="21"
-          viewBox="0 0 20 21"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {text === "History" ? (
-            <path d={icon} stroke={select === text ? "#b17457" : "#1e1e1e"} />
-          ) : (
-            <path d={icon} fill={select === text ? "#b17457" : "#1e1e1e"} />
-          )}
-        </svg>
-      ) : (
-        <img src={icon} width="22px" height="22px" />
-      )}
+    <button className={select === text ? "menu selected" : "menu"} onClick={changeMenu}>
+      {text !== "Cart" ? (<VectorMenuItem icon={icon} text={text} select={select} />) : (<img src={icon} width="22px" height="22px" />)}
       <p>{text}</p>
     </button>
+  );
+}
+
+function VectorMenuItem({ icon, text, select }) {
+  return (
+    <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {text === "History" ?
+        (<path d={icon} stroke={select === text ? "#b17457" : "#1e1e1e"} />) :
+        (<path d={icon} fill={select === text ? "#b17457" : "#1e1e1e"} />)}
+    </svg>
   );
 }
 
 function GuestAvatar() {
   return (
     <div className="GuestAvatar">
-      <img src={placeHolder} />
+      <Link to="/login">
+        <img src={placeHolder} />
+      </Link>
     </div>
   );
 }

@@ -10,27 +10,30 @@ body,
   padding: 20px;
   position: relative;
   background-color: #faf7f0;
+  display: flex;
 }
 
-.main-logo-container h1 {
-  font-size: 96px;
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  font-family: 700;
+.main-logo-container .icon-name {
+  display: flex;
+  height: auto;
 }
 
-.main-logo-container p {
-  font-size: 64px;
+.main-logo-container #title {
   margin: 0;
+  font-size: 48px;
   font-family: "Poppins", sans-serif;
-  color: #b17457;
   font-weight: 700;
+  text-align: left;
+  color: #333333;
 }
 
-.main-logo-container img {
-  position: absolute;
-  width: 227.32px;
-  height: 227.32px;
-  top: -7%;
-  left: 17%;
+.main-logo-container #slogan {
+  margin: 0;
+  font-size: 32px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  background: linear-gradient(90deg, #000000 0%, #666666 28.5%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

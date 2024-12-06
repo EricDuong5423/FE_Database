@@ -1,6 +1,9 @@
 import SlideMenu from "../Components/SlideMenuCustomer";
 import "../Styles/HomePage.css";
 import pizzaImage from "../../public/pizzaAI.png";
+import ingTomato from "../../public/Tomato.png";
+import ingBasil from "../../public/Basil.png";
+import ingCheese from "../../public/Cheese.png";
 
 function HomePage() {
   return (
@@ -15,7 +18,7 @@ function HomePage() {
 
 function TodaySales() {
   return (
-    <div className="today-sales">
+    <div className="today-sales" width="100%">
       <h3>Today's top sales!</h3>
       <p>let's take a look at our best seller!</p>
     </div>
@@ -37,7 +40,25 @@ function IngredientsDescription() {
         trio not only delights the palate but also symbolizes nature’s
         abundance, reminding us of the beauty in fresh, wholesome ingredients.
       </p>
-      <IngredientsImage />
+      <IngredientShowcase />
+    </div>
+  );
+}
+
+function IngredientShowcase() {
+  return (
+    <div className="ingredient-showcase">
+      <IngredientItem id="item-1" imgSrc={ingBasil} />
+      <IngredientItem id="item-2" imgSrc={ingTomato} />
+      <IngredientItem id="item-3" imgSrc={ingCheese} />
+    </div>
+  );
+}
+
+function IngredientItem({ imgSrc, id }) {
+  return (
+    <div className="ingredient-item" id={id}>
+      <img id="ingredient-img" src={imgSrc} height={`${400}px`} width={`${400}px`} />
     </div>
   );
 }
