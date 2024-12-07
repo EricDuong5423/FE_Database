@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../Styles/Menu.css";
+import SlideMenuCustomer from "../Components/SlideMenuCustomer";
 
 function Menu() {
   const [selectedMenu, setSelectedMenu] = useState("Pizza");
@@ -44,42 +45,43 @@ function Menu() {
       },
     ],
 
-    Pasta: [
-      
-    ]
+    Pasta: [],
   };
 
   return (
-    <div className="menu-page">
-      {/* Header */}
-      <header className="menu-header">
-        <div className="menu-title-container">
-          <h1 className="menu-title">Menu</h1>
-          <p className="menu-subtitle">HERE'S OUR YUMMY MENU!</p>
-        </div>
-      </header>
+    <>
+      <SlideMenuCustomer />
+      <div className="menu-page">
+        {/* Header */}
+        <header className="menu-header">
+          <div className="menu-title-container">
+            <h1 className="menu-title">Menu</h1>
+            <p className="menu-subtitle">HERE'S OUR YUMMY MENU!</p>
+          </div>
+        </header>
 
-      {/* Menu Items */}
-      <div className="menu-items">
-        {menus.Pizza.map((item, index) => (
-          <div className="menu-item" key={index}>
-            <div className="item-content">
-              <h2 className="item-title">{item.name}</h2>
-              <p className="item-description">{item.description}</p>
-              <div className="item-prices">
-                <span>XL: {item.prices.XL}</span>
-                <span>L: {item.prices.L}</span>
-                <span>M: {item.prices.M}</span>
-                <span>S: {item.prices.S}</span>
+        {/* Menu Items */}
+        <div className="menu-items">
+          {menus.Pizza.map((item, index) => (
+            <div className="menu-item" key={index}>
+              <div className="item-content">
+                <h2 className="item-title">{item.name}</h2>
+                <p className="item-description">{item.description}</p>
+                <div className="item-prices">
+                  <span>XL: {item.prices.XL}</span>
+                  <span>L: {item.prices.L}</span>
+                  <span>M: {item.prices.M}</span>
+                  <span>S: {item.prices.S}</span>
+                </div>
+              </div>
+              <div className="item-image">
+                <img src={item.image} alt={item.name} />
               </div>
             </div>
-            <div className="item-image">
-              <img src={item.image} alt={item.name} />
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
