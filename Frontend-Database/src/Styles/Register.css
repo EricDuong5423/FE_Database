@@ -64,68 +64,67 @@ body {
 }
 
 .add-icon {
-=======
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: "Poppins", sans-serif;
-    background-color: #e0dbc6; /* Màu nền tổng thể */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  /* Wrapper toàn bộ */
-  .register-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-  
-  /* Container chính */
-  .register-container {
-    display: flex;
-    flex-direction: row;
-    width: 1350px; 
-    height: 730px;
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Avatar Section */
-  .avatar-section {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px; /* Đưa xuống một chút để cân đối */
-  }
-  
-  .profile-icon {
-    position: relative;
-    width: 201px;
-    height: 210px;
-    border-radius: 50%;
-    background: #dcdcdc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .avatar-image {
-    width: 100%; /* Đảm bảo ảnh chiếm toàn bộ khung */
-    height: 100%;
-    border-radius: 50%; /* Cắt ảnh thành hình tròn */
-    object-fit: cover; /* Giữ tỷ lệ ảnh */
-  }
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #e0dbc6; /* Màu nền tổng thể */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+/* Wrapper toàn bộ */
+.register-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 
-  .add-icon {
+/* Container chính */
+.register-container {
+  display: flex;
+  flex-direction: row;
+  width: 1350px;
+  height: 730px;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Avatar Section */
+.avatar-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px; /* Đưa xuống một chút để cân đối */
+}
+
+.profile-icon {
+  position: relative;
+  width: 201px;
+  height: 210px;
+  border-radius: 50%;
+  background: #dcdcdc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-image {
+  width: 100%; /* Đảm bảo ảnh chiếm toàn bộ khung */
+  height: 100%;
+  border-radius: 50%; /* Cắt ảnh thành hình tròn */
+  object-fit: cover; /* Giữ tỷ lệ ảnh */
+}
+
+.add-icon {
   position: absolute;
   right: 0;
   bottom: 0;
