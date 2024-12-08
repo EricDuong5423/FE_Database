@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Styles/Menu.css";
 import SlideMenuCustomer from "../Components/SlideMenuCustomer";
+import api from "../api";
 
 function Menu() {
   const [selectedMenu, setSelectedMenu] = useState("Pizza");
+  useEffect(() => {
+    const fetchMenuData = async () => {
+      const response = await api.get("/menu/viewDishes");
+      setSelectedMenu(response.data);
+    };
+
+    fetchMenuData();
+  }, []);
+
+  console.log(selectedMenu);
 
   const menus = {
     Pizza: [
@@ -50,7 +61,7 @@ function Menu() {
 
   return (
     <>
-      <SlideMenuCustomer />
+      <SlideMenuCustomer slideNavigate="Menu" />
       <div className="menu-page">
         {/* Header */}
         <header className="menu-header">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import "../Styles/SlideMenu.css";
 
 // images
@@ -23,12 +23,12 @@ const chat =
 const wallet =
   "M4.16663 18H15.8333C16.4963 18 17.1322 17.7366 17.6011 17.2678C18.0699 16.7989 18.3333 16.163 18.3333 15.5V5.5C18.3333 4.83696 18.0699 4.20107 17.6011 3.73223C17.1322 3.26339 16.4963 3 15.8333 3H4.16663C3.50359 3 2.8677 3.26339 2.39886 3.73223C1.93002 4.20107 1.66663 4.83696 1.66663 5.5V15.5C1.66663 16.163 1.93002 16.7989 2.39886 17.2678C2.8677 17.7366 3.50359 18 4.16663 18ZM16.6666 11.3333H12.5V9.66667H16.6666V11.3333ZM3.33329 5.5C3.33329 5.27899 3.42109 5.06702 3.57737 4.91074C3.73365 4.75446 3.94561 4.66667 4.16663 4.66667H15.8333C16.0543 4.66667 16.2663 4.75446 16.4226 4.91074C16.5788 5.06702 16.6666 5.27899 16.6666 5.5V8H11.6666C11.4456 8 11.2337 8.0878 11.0774 8.24408C10.9211 8.40036 10.8333 8.61232 10.8333 8.83333V12.1667C10.8333 12.3877 10.9211 12.5996 11.0774 12.7559C11.2337 12.9122 11.4456 13 11.6666 13H16.6666V15.5C16.6666 15.721 16.5788 15.933 16.4226 16.0893C16.2663 16.2455 16.0543 16.3333 15.8333 16.3333H4.16663C3.94561 16.3333 3.73365 16.2455 3.57737 16.0893C3.42109 15.933 3.33329 15.721 3.33329 15.5V5.5Z";
 
-function SlideMenuCustomer() {
+function SlideMenuCustomer({ slideNavigate }) {
   return (
     <div className="slide-menu">
       <IconName />
       <Search />
-      <SlideMenu />
+      <SlideMenu slideNavigate={slideNavigate} />
       <GuestAvatar />
     </div>
   );
@@ -61,13 +61,18 @@ function Search() {
   );
 }
 
-function SlideMenu() {
-  const [select, setSelect] = useState(null);
+function SlideMenu({ slideNavigate }) {
+  const [select, setSelect] = useState(slideNavigate);
   return (
     <div className="slide-menu-container">
       <Menu icon={home} text="Home" select={select} setSelect={setSelect} />
       <Menu icon={menu} text="Menu" select={select} setSelect={setSelect} />
-      <Menu icon={history} text="History" select={select} setSelect={setSelect} />
+      <Menu
+        icon={history}
+        text="History"
+        select={select}
+        setSelect={setSelect}
+      />
       <Menu icon={chat} text="Chat" select={select} setSelect={setSelect} />
       <Menu icon={wallet} text="Wallet" select={select} setSelect={setSelect} />
       <Menu icon={cartIcon} text="Cart" select={select} setSelect={setSelect} />
@@ -76,12 +81,22 @@ function SlideMenu() {
 }
 
 function Menu({ icon, text, select, setSelect }) {
+  const navigate = useNavigate();
   function changeMenu() {
     setSelect(text);
+    const navigateWeb = "/" + text.toLowerCase();
+    navigate(navigateWeb);
   }
   return (
-    <button className={select === text ? "menu selected" : "menu"} onClick={changeMenu}>
-      {text !== "Cart" ? (<VectorMenuItem icon={icon} text={text} select={select} />) : (<img src={icon} width="22px" height="22px" />)}
+    <button
+      className={select === text ? "menu selected" : "menu"}
+      onClick={changeMenu}
+    >
+      {text !== "Cart" ? (
+        <VectorMenuItem icon={icon} text={text} select={select} />
+      ) : (
+        <img src={icon} width="22px" height="22px" />
+      )}
       <p>{text}</p>
     </button>
   );
@@ -89,10 +104,18 @@ function Menu({ icon, text, select, setSelect }) {
 
 function VectorMenuItem({ icon, text, select }) {
   return (
-    <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {text === "History" ?
-        (<path d={icon} stroke={select === text ? "#b17457" : "#1e1e1e"} />) :
-        (<path d={icon} fill={select === text ? "#b17457" : "#1e1e1e"} />)}
+    <svg
+      width="20"
+      height="21"
+      viewBox="0 0 20 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {text === "History" ? (
+        <path d={icon} stroke={select === text ? "#b17457" : "#1e1e1e"} />
+      ) : (
+        <path d={icon} fill={select === text ? "#b17457" : "#1e1e1e"} />
+      )}
     </svg>
   );
 }
