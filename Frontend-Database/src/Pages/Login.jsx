@@ -8,19 +8,23 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     try {
       const response = await api.post("/user/login", {
         username,
         password,
       });
+      if (!response.data.access_token)
+        throw new Error("Wrong username or password");
       localStorage.setItem("authToken", response.data.access_token);
       navigate("/home");
     } catch (error) {
-      console.log(error);
-      alert("Wrong username or password");
+      alert(error);
     }
+  };
+  const handleNavigate = async () => {
+    navigate("/register");
   };
   return (
     <>
@@ -43,7 +47,7 @@ function LoginPage() {
             />
             <button onClick={handleLogin}>Sign in</button>
             <p className="message">
-              Not registered? <a href="#">Create an account</a>
+              Not registered? <a onClick={handleNavigate}>Create an account</a>
             </p>
           </form>
         </div>

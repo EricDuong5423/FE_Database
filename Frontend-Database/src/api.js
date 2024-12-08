@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Tạo instance Axios
 const api = axios.create({
-  baseURL: "https://pizza-fastbear-be.onrender.com", // URL API backend của bạn
+  baseURL: "http://4.194.248.208:4000", // URL API backend của bạn
   headers: {
     "Content-Type": "application/json",
   },

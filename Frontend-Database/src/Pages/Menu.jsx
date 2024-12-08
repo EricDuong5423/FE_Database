@@ -4,7 +4,7 @@ import SlideMenuCustomer from "../Components/SlideMenuCustomer";
 import api from "../api";
 
 function Menu() {
-  const [selectedMenu, setSelectedMenu] = useState("Pizza");
+  const [selectedMenu, setSelectedMenu] = useState();
   useEffect(() => {
     const fetchMenuData = async () => {
       const response = await api.get("/menu/viewDishes");
@@ -13,52 +13,6 @@ function Menu() {
 
     fetchMenuData();
   }, []);
-
-  console.log(selectedMenu);
-
-  const menus = {
-    Pizza: [
-      {
-        name: "Tropical Pizza",
-        image: "/tropical-pizza.png",
-        prices: { XL: "20$", L: "15$", M: "10$", S: "8$" },
-        description: "Cheese and tomato-based sea food pizza",
-      },
-      {
-        name: "Veggie Pizza",
-        image: "/veggie-pizza.png",
-        prices: { XL: "18$", L: "14$", M: "12$", S: "9$" },
-        description: "Cheese and fresh vegetable toppings",
-      },
-      {
-        name: "Pepperoni Pizza",
-        image: "/pepperoni-pizza.png",
-        prices: { XL: "22$", L: "17$", M: "13$", S: "10$" },
-        description: "Cheese, tomato, and pepperoni toppings",
-      },
-      {
-        name: "Chicken Teriyaki Pizza",
-        image: "/chicken-teriyaki-pizza.png",
-        prices: { XL: "24$", L: "19$", M: "14$", S: "11$" },
-        description: "Chicken, teriyaki sauce, cheese, and vegetables",
-      },
-      {
-        name: "Cheese & Bacon Pizza",
-        image: "/cheese-bacon-pizza.png",
-        prices: { XL: "25$", L: "20$", M: "15$", S: "12$" },
-        description: "Cheese, bacon, and tomato toppings",
-      },
-      {
-        name: "Mediterranean Pizza",
-        image: "/mediterranean-pizza.png",
-        prices: { XL: "23$", L: "18$", M: "13$", S: "10$" },
-        description: "Cheese, tomato, olive, and mushroom toppings",
-      },
-    ],
-
-    Pasta: [],
-  };
-
   return (
     <>
       <SlideMenuCustomer slideNavigate="Menu" />
@@ -73,23 +27,28 @@ function Menu() {
 
         {/* Menu Items */}
         <div className="menu-items">
-          {menus.Pizza.map((item, index) => (
-            <div className="menu-item" key={index}>
-              <div className="item-content">
-                <h2 className="item-title">{item.name}</h2>
-                <p className="item-description">{item.description}</p>
-                <div className="item-prices">
-                  <span>XL: {item.prices.XL}</span>
-                  <span>L: {item.prices.L}</span>
-                  <span>M: {item.prices.M}</span>
-                  <span>S: {item.prices.S}</span>
+          {!selectedMenu ||
+            selectedMenu.map((item, index) => (
+              <div className="menu-item" key={index}>
+                <div className="item-content">
+                  <h2 className="item-title">{item.name}</h2>
+                  <p className="item-description">
+                    Description: {item.description}
+                  </p>
+                  <p className="item-recipes">Recipes: {item.recipes}</p>
+                  <div className="item-prices">
+                    <strong>Price:</strong> <br />
+                    <span>XL: {item.price * 2}$</span> <br />
+                    <span>L: {item.price * 1.5}$</span> <br />
+                    <span>M: {item.price * 1.2}$</span> <br />
+                    <span>S: {item.price}$</span>
+                  </div>
+                </div>
+                <div className="item-image">
+                  <img src={item.images} alt={item.name} />
                 </div>
               </div>
-              <div className="item-image">
-                <img src={item.image} alt={item.name} />
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </>
