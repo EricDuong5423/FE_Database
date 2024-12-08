@@ -127,7 +127,8 @@ body {
 
 .email,
 .address,
-.phone {
+.phone,
+.password {
   width: 600px;
   height: 65px;
 }
