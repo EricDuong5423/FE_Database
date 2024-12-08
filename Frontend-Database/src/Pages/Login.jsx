@@ -1,6 +1,6 @@
 import "../Styles/LoginPage.css";
 import BaseHeader from "../Components/BaseHeader";
-import axios from "axios";
+import api from "../api";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 function LoginPage() {
@@ -9,26 +9,26 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
+    event.preventDefault();
     try {
-      const response = await axios.post();
+      const response = await api.post("/user/login", {
+        username,
+        password,
+      });
+      localStorage.setItem("authToken", response.data.access_token);
+      navigate("/home");
     } catch (error) {
-      alert(error);
+      console.log(error);
+      alert("Wrong username or password");
     }
   };
   return (
     <>
       <BaseHeader />
-      <div class="login-page">
-        <div class="form">
+      <div className="login-page">
+        <div className="form">
           <p id="title">Login</p>
-          {/* <form class="register-form">
-                    <input type="text" placeholder="name" />
-                    <input type="password" placeholder="password" />
-                    <input type="text" placeholder="email address" />
-                    <button>create</button>
-                    <p class="message">Already registered? <a href="#">Sign In</a></p>
-                </form> */}
-          <form class="login-form">
+          <form className="login-form">
             <input
               type="text"
               placeholder="Email or username"
@@ -42,7 +42,7 @@ function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
             />
             <button onClick={handleLogin}>Sign in</button>
-            <p class="message">
+            <p className="message">
               Not registered? <a href="#">Create an account</a>
             </p>
           </form>

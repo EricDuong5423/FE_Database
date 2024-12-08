@@ -4,14 +4,41 @@ import pizzaImage from "../../public/pizzaAI.png";
 import ingTomato from "../../public/Tomato.png";
 import ingBasil from "../../public/Basil.png";
 import ingCheese from "../../public/Cheese.png";
+import api from "../api";
+import { useState, useEffect } from "react";
 
 function HomePage() {
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState("");
+
+  // useEffect(() => {
+  //   const fetchUserData = async () => {
+  //     try {
+  //       const response = await api.get("/user/profile", {
+  //         headers: {
+  //           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+  //         },
+  //       });
+  //       setUserData(response.data);
+  //     } catch (err) {
+  //       setError("Failed to fetch user data.");
+  //     }
+  //   };
+
+  //   fetchUserData();
+  // }, []);
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
   return (
     <>
-      <SlideMenu />
+      <SlideMenu slideNavigate="Home" />
       <TodaySales />
       <img src={pizzaImage} width="100%" />
       <IngredientsDescription />
+      {userData && <pre>{JSON.stringify(userData, null, 2)}</pre>}
     </>
   );
 }
@@ -58,13 +85,14 @@ function IngredientShowcase() {
 function IngredientItem({ imgSrc, id }) {
   return (
     <div className="ingredient-item" id={id}>
-      <img id="ingredient-img" src={imgSrc} height={`${400}px`} width={`${400}px`} />
+      <img
+        id="ingredient-img"
+        src={imgSrc}
+        height={`${400}px`}
+        width={`${400}px`}
+      />
     </div>
   );
-}
-
-function IngredientsImage() {
-  return <div className="ingredients-image"></div>;
 }
 
 export default HomePage;
