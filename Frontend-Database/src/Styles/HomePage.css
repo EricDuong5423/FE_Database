@@ -14,7 +14,7 @@ body,
 
 /*Sales*/
 .today-sales {
-  width: 100%;
+  width: 100vw;
   font-family: "Baskervville", sans-serif;
   padding: 30px;
 }
@@ -78,7 +78,7 @@ body,
 }
 
 .ingredient-showcase #item-1 {
-  background-color: #4C4B16;
+  background-color: #4c4b16;
 }
 
 .ingredient-showcase #item-2 {
@@ -86,5 +86,5 @@ body,
 }
 
 .ingredient-showcase #item-3 {
-  background-color: #E6C767;
+  background-color: #e6c767;
 }

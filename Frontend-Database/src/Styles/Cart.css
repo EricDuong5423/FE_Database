@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Title text */
+.title-text {
+  margin-top: 20px;
+  margin-left: 40px;
+  font-family: "Baskervville", sans-serif;
+}
+
+.title-text h1 {
+  font-size: 32px;
+  font-weight: 400;
+  color: #464255;
+}
+
+.title-text h2 {
+  font-size: 18px;
+  color: #898121;
+  font-weight: 400;
+}
+
+/* Customer */
+.customer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #faf7f0;
+  width: calc(100% - 80px);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 0 auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  justify-items: center;
+}
+/* Order info */
+.order-info {
+  grid: 1 / span 1;
+}
+
+/* Customer info */
+.customer-info {
+  grid: 2 / span 1;
+}
+
+/* Address info */
+.address-info {
+  grid: 3 / span 1;
+}

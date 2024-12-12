@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import "../Styles/SlideMenu.css";
-
 // images
 import logo from "../../public/logo.png";
 import searchIcon from "../../public/searchicon.png";
 import cartIcon from "../../public/cart.png";
 import placeHolder from "../../public/placeholderavatar.png";
+import { useAppContext } from "../../hooks/useAppContext";
 
 const home =
   "M0.5 6.66646V16.6665C0.5 16.8875 0.587797 17.0994 0.744078 17.2557C0.900358 17.412 1.11232 17.4998 1.33333 17.4998H5.5C5.72101 17.4998 5.93297 17.412 6.08925 17.2557C6.24554 17.0994 6.33333 16.8875 6.33333 16.6665V10.8331H9.66667V16.6665C9.66667 16.8875 9.75446 17.0994 9.91074 17.2557C10.067 17.412 10.279 17.4998 10.5 17.4998H14.6667C14.8877 17.4998 15.0996 17.412 15.2559 17.2557C15.4122 17.0994 15.5 16.8875 15.5 16.6665V6.66646C15.5 6.53709 15.4699 6.4095 15.412 6.29379C15.3542 6.17807 15.2702 6.07742 15.1667 5.9998L8.5 0.999797C8.35575 0.891611 8.18031 0.83313 8 0.83313C7.81969 0.83313 7.64425 0.891611 7.5 0.999797L0.833333 5.9998C0.729837 6.07742 0.645834 6.17807 0.587977 6.29379C0.530121 6.4095 0.5 6.53709 0.5 6.66646ZM2.16667 7.08313L8 2.70813L13.8333 7.08313V15.8331H11.3333V9.9998C11.3333 9.77878 11.2455 9.56682 11.0893 9.41054C10.933 9.25426 10.721 9.16646 10.5 9.16646H5.5C5.27899 9.16646 5.06702 9.25426 4.91074 9.41054C4.75446 9.56682 4.66667 9.77878 4.66667 9.9998V15.8331H2.16667V7.08313Z";
@@ -121,8 +121,18 @@ function VectorMenuItem({ icon, text, select }) {
 }
 
 function GuestAvatar() {
+  const { deleteCart, deleteToken, deleteRole } = useAppContext();
   return (
-    <div className="GuestAvatar">
+    <div
+      className="GuestAvatar"
+      onClick={() => {
+        deleteCart();
+        deleteRole();
+        deleteToken();
+        localStorage.removeItem("token");
+        localStorage.removeItem("role");
+      }}
+    >
       <Link to="/login">
         <img src={placeHolder} />
       </Link>

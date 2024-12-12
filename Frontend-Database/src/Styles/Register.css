@@ -12,6 +12,7 @@ body {
   background-color: #e0dbc6; /* Màu nền tổng thể */
   display: flex;
   justify-content: center;
+  /* align-items: flex-start;  */
   min-height: 100vh;
 }
 
@@ -74,7 +75,7 @@ body {
   background-color: #e0dbc6; /* Màu nền tổng thể */
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   min-height: 100vh;
 }
 /* Wrapper toàn bộ */

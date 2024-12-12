@@ -3,10 +3,13 @@ import BaseHeader from "../Components/BaseHeader";
 import api from "../api";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import { useAppContext } from "../../hooks/useAppContext";
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const { updateToken, updateRole, role } = useAppContext();
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -17,8 +20,20 @@ function LoginPage() {
       });
       if (!response.data.access_token)
         throw new Error("Wrong username or password");
-      localStorage.setItem("authToken", response.data.access_token);
-      navigate("/home");
+
+      localStorage.setItem("token", response.data.access_token);
+      localStorage.setItem("role", response.data.role);
+      updateToken(response.data.access_token);
+      updateRole(response.data.role);
+      if (role === "customer") {
+        navigate("/home");
+      } else if (role === "admin") {
+        navigate("/admin");
+      } else if (role === "salesman") {
+        navigate("/salesman");
+      } else if (role === "kitchen_staff") {
+        navigate("/kitchenstaff");
+      }
     } catch (error) {
       alert(error);
     }
