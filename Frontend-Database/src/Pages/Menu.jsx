@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import "../Styles/Menu.css";
 import SlideMenuCustomer from "../Components/SlideMenuCustomer";
 import api from "../api";
-import { useCart } from "../CartContext";
+import { useAppContext } from "../../hooks/useAppContext";
 
 function Menu() {
   const [selectedMenu, setSelectedMenu] = useState();
-  const { addToCart } = useCart();
+  const { addToCart, token } = useAppContext();
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
     if (token) {
       const fetchMenuData = async () => {
         const response = await api.get("/menu/viewDishes", {
