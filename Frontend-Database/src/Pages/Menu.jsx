@@ -1,56 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Styles/Menu.css";
 import SlideMenuCustomer from "../Components/SlideMenuCustomer";
+import api from "../api";
+import { useAppContext } from "../../hooks/useAppContext";
 
 function Menu() {
-  const [selectedMenu, setSelectedMenu] = useState("Pizza");
+  const [selectedMenu, setSelectedMenu] = useState();
+  const { addToCart, token } = useAppContext();
+  useEffect(() => {
+    if (token) {
+      const fetchMenuData = async () => {
+        const response = await api.get("/menu/viewDishes", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setSelectedMenu(response.data);
+      };
 
-  const menus = {
-    Pizza: [
-      {
-        name: "Tropical Pizza",
-        image: "/tropical-pizza.png",
-        prices: { XL: "20$", L: "15$", M: "10$", S: "8$" },
-        description: "Cheese and tomato-based sea food pizza",
-      },
-      {
-        name: "Veggie Pizza",
-        image: "/veggie-pizza.png",
-        prices: { XL: "18$", L: "14$", M: "12$", S: "9$" },
-        description: "Cheese and fresh vegetable toppings",
-      },
-      {
-        name: "Pepperoni Pizza",
-        image: "/pepperoni-pizza.png",
-        prices: { XL: "22$", L: "17$", M: "13$", S: "10$" },
-        description: "Cheese, tomato, and pepperoni toppings",
-      },
-      {
-        name: "Chicken Teriyaki Pizza",
-        image: "/chicken-teriyaki-pizza.png",
-        prices: { XL: "24$", L: "19$", M: "14$", S: "11$" },
-        description: "Chicken, teriyaki sauce, cheese, and vegetables",
-      },
-      {
-        name: "Cheese & Bacon Pizza",
-        image: "/cheese-bacon-pizza.png",
-        prices: { XL: "25$", L: "20$", M: "15$", S: "12$" },
-        description: "Cheese, bacon, and tomato toppings",
-      },
-      {
-        name: "Mediterranean Pizza",
-        image: "/mediterranean-pizza.png",
-        prices: { XL: "23$", L: "18$", M: "13$", S: "10$" },
-        description: "Cheese, tomato, olive, and mushroom toppings",
-      },
-    ],
-
-    Pasta: [],
-  };
-
+      fetchMenuData();
+    }
+  }, []);
   return (
     <>
-      <SlideMenuCustomer />
+      <SlideMenuCustomer slideNavigate="Menu" />
       <div className="menu-page">
         {/* Header */}
         <header className="menu-header">
@@ -62,23 +33,48 @@ function Menu() {
 
         {/* Menu Items */}
         <div className="menu-items">
-          {menus.Pizza.map((item, index) => (
-            <div className="menu-item" key={index}>
-              <div className="item-content">
-                <h2 className="item-title">{item.name}</h2>
-                <p className="item-description">{item.description}</p>
-                <div className="item-prices">
-                  <span>XL: {item.prices.XL}</span>
-                  <span>L: {item.prices.L}</span>
-                  <span>M: {item.prices.M}</span>
-                  <span>S: {item.prices.S}</span>
+          {!selectedMenu ||
+            selectedMenu.map((item, index) => (
+              <div className="menu-item" key={index}>
+                <div className="item-desc-wrapper">
+                  <div className="item-content">
+                    <h2 className="item-title">{item.name}</h2>
+                    <p className="item-description">
+                      Description: {item.description}
+                    </p>
+                    <p className="item-recipes">Recipes: {item.recipes}</p>
+                  </div>
+                  <div className="item-image">
+                    <img src={item.images} alt={item.name} />
+                  </div>
+                </div>
+                <div className="add-to-cart-button">
+                  <button onClick={() => addToCart(item)}>
+                    <div className="default-btn">
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="20"
+                        height="20"
+                        stroke="#ffffff"
+                        strokeWidth="2"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="cart-icon"
+                      >
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                      </svg>
+                      <span>Add to Cart</span>
+                    </div>
+                    <div className="hover-btn">
+                      <span>{item.price / 1000}k vnd</span>
+                    </div>
+                  </button>
                 </div>
               </div>
-              <div className="item-image">
-                <img src={item.image} alt={item.name} />
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </>
