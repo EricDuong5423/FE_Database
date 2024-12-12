@@ -7,6 +7,7 @@ import Register from "./Pages/Register";
 import Menu from "./Pages/Menu";
 import Cart from "./Pages/Cart";
 import Admin from "./Pages/Admin";
+import KitchenStaff from "./Pages/KitchenStaff";
 import { AppProvider } from "../context/AppContext";
 import { useAppContext } from "../hooks/useAppContext";
 
@@ -60,7 +61,11 @@ ReactDOM.createRoot(root).render(
         ></Route>
         <Route
           path="/kitchenstaff"
-          element={<ProtectedRoute></ProtectedRoute>}
+          element={
+            <ProtectedRoute>
+              <KitchenStaff />
+            </ProtectedRoute>
+          }
         ></Route>
         <Route
           path="/salesman"
