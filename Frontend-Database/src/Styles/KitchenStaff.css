@@ -1,0 +1,163 @@
+#root {
+  background-color: #d8d2c2;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.kitchen-staff {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.kitchen-staff__title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.kitchen-staff__logout {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #e63946;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+
+.kitchen-staff__logout:hover {
+  background-color: #d62839;
+}
+
+.kitchen-staff__add-product {
+  margin-bottom: 30px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fefefe;
+}
+
+.kitchen-staff__section-title {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #555;
+}
+
+.kitchen-staff__input {
+  width: calc(50% - 10px);
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.kitchen-staff__add-button {
+  margin: 5px;
+  padding: 10px 15px;
+  background-color: #38b000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.kitchen-staff__add-button:hover {
+  background-color: #2a9010;
+}
+
+.kitchen-staff__product-list {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fefefe;
+}
+
+.kitchen-staff__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.kitchen-staff__table-header {
+  text-align: left;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-bottom: 2px solid #ddd;
+}
+
+.kitchen-staff__table-row:hover {
+  background-color: #fafafa;
+}
+
+.kitchen-staff__table-cell {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.kitchen-staff__quantity-button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.kitchen-staff__quantity-button:hover {
+  background-color: #0056b3;
+}
+
+.kitchen-staff__delete-button {
+  padding: 5px 10px;
+  background-color: #e63946;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.kitchen-staff__delete-button:hover {
+  background-color: #d62839;
+}
+
+.kitchen-staff__no-products {
+  text-align: center;
+  color: #888;
+}
+
+.kitchen-staff__import-button {
+  padding: 5px 10px;
+  background-color: green;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.kitchen-staff__import-button:hover {
+  background-color: #2a9010;
+}
+
+.kitchen-staff__discard-button {
+  padding: 5px 10px;
+  background-color: blue;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.kitchen-staff__discard-button:hover {
+  background-color: blueviolet;
+}
