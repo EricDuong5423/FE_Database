@@ -5,7 +5,7 @@ import api from "../api";
 import { format } from "date-fns";
 
 const KitchenStaff = () => {
-  const { deleteCart, deleteToken, deleteRole } = useAppContext();
+  const { deleteCart, deleteToken, deleteRole, deleteID } = useAppContext();
   const [products, setProducts] = useState([]);
   const [newProduct, setNewProduct] = useState({
     name: "",
@@ -79,11 +79,10 @@ const KitchenStaff = () => {
       <button
         className="kitchen-staff__logout"
         onClick={() => {
-          localStorage.removeItem("token");
-          localStorage.removeItem("role");
           deleteCart();
           deleteRole();
           deleteToken();
+          deleteID();
         }}
       >
         Logout

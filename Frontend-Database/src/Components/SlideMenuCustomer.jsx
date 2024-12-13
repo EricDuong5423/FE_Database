@@ -121,7 +121,7 @@ function VectorMenuItem({ icon, text, select }) {
 }
 
 function GuestAvatar() {
-  const { deleteCart, deleteToken, deleteRole } = useAppContext();
+  const { deleteCart, deleteToken, deleteRole, deleteID } = useAppContext();
   return (
     <div
       className="GuestAvatar"
@@ -129,8 +129,7 @@ function GuestAvatar() {
         deleteCart();
         deleteRole();
         deleteToken();
-        localStorage.removeItem("token");
-        localStorage.removeItem("role");
+        deleteID();
       }}
     >
       <Link to="/login">

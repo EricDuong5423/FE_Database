@@ -9,7 +9,7 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const { updateToken, updateRole, role } = useAppContext();
+  const { updateToken, updateRole, role, updateID } = useAppContext();
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -24,6 +24,8 @@ function LoginPage() {
 
       localStorage.setItem("token", response.data.access_token);
       localStorage.setItem("role", response.data.role);
+      localStorage.setItem("id", response.data.id);
+      updateID(response.data.id);
       updateToken(response.data.access_token);
       updateRole(response.data.role);
       if (role === "manager") {

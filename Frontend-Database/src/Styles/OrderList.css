@@ -1,0 +1,54 @@
+/* Đặt màu nền chung cho toàn bộ container */
+.order-list-container {
+  padding: 20px;
+  background-color: #d8d2c2; /* Màu nền chung */
+  height: 100vh; /* Chiều cao tối thiểu cho giao diện */
+  box-sizing: border-box;
+}
+
+h2 {
+  color: #555;
+}
+
+p {
+  color: #888;
+}
+
+/* Styling cho bảng */
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.order-table th {
+  background-color: #b6b0a2; /* Màu nền header */
+  color: #000; /* Màu chữ đen */
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.order-table td {
+  text-align: center; /* Canh giữa ngang */
+  vertical-align: middle; /* Canh giữa dọc */
+  padding: 10px;
+  border: 1px solid #ddd;
+  color: #000; /* Tất cả chữ trong bảng đều màu đen */
+}
+
+/* Gạch chân Order ID */
+.order-table td:nth-child(3) {
+  text-decoration: underline;
+}
+
+/* Dòng đậm - nhạt hơn */
+.even-row td {
+  background-color: #716e41; /* Màu nhạt hơn thay vì #4C4B16 */
+  color: #000; /* Chữ vẫn đen */
+}
+
+/* Dòng nhạt */
+.odd-row td {
+  background-color: #faf7f0; /* Màu nền nhạt */
+}
