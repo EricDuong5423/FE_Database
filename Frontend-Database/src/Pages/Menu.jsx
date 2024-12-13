@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../Styles/Menu.css";
 import SlideMenuCustomer from "../Components/SlideMenuCustomer";
 import api from "../api";

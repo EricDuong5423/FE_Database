@@ -9,6 +9,7 @@ import LoginAdmin from "./Pages/LoginAdmin";
 import Cart from "./Pages/Cart";
 import Admin from "./Pages/Admin";
 import KitchenStaff from "./Pages/KitchenStaff";
+import OrderList from "./Pages/OrderList";
 import { AppProvider } from "../context/AppContext";
 import { useAppContext } from "../hooks/useAppContext";
 
@@ -71,7 +72,11 @@ ReactDOM.createRoot(root).render(
         ></Route>
         <Route
           path="/salesman"
-          element={<ProtectedRoute></ProtectedRoute>}
+          element={
+            <ProtectedRoute>
+              <OrderList />
+            </ProtectedRoute>
+          }
         ></Route>
       </Routes>
     </BrowserRouter>

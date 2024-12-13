@@ -6,12 +6,14 @@ export const AppProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [role, setRole] = useState(localStorage.getItem("role") || "");
+  const [ID, setID] = useState(localStorage.getItem("id") || "");
 
   const addToCart = (item) => {
     setCart((prevCart) => [...prevCart, item]);
   };
 
   const deleteCart = () => {
+    localStorage.setItem("cart", []);
     setCart([]);
   };
 
@@ -23,8 +25,23 @@ export const AppProvider = ({ children }) => {
     setRole(role);
   };
 
-  const deleteToken = () => setToken("");
-  const deleteRole = () => setRole("");
+  const updateID = (id) => {
+    setID(id);
+  };
+
+  const deleteToken = () => {
+    setToken("");
+    localStorage.removeItem("token");
+  };
+  const deleteRole = () => {
+    setRole("");
+    localStorage.removeItem("role");
+  };
+
+  const deleteID = () => {
+    setID("");
+    localStorage.removeItem("id");
+  };
 
   return (
     <AppContext.Provider
@@ -38,6 +55,9 @@ export const AppProvider = ({ children }) => {
         updateRole,
         deleteToken,
         deleteRole,
+        ID,
+        updateID,
+        deleteID,
       }}
     >
       {children}
