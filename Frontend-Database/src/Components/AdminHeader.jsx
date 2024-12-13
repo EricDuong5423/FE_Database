@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import "../Styles/Admin.css";
 import api from "../api";
-const store_id = "FA0DD174-73D7-404D-9AD9-C738934240FA";
+import { useAppContext } from "../../hooks/useAppContext";
 
 const Header = () => {
   const [adminData, setAdminData] = useState(null);
+  const { ID } = useAppContext();
   useEffect(() => {
     const fetchAdminData = async () => {
-      const response = await api.get(`/user/staff/admin?store_id=${store_id}`);
+      const response = await api.get(`/user/staff/admin?store_id=${ID}`);
       console.log(response.data);
       setAdminData(response.data);
     };
