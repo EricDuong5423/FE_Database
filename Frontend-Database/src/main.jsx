@@ -5,6 +5,7 @@ import HomePage from "./Pages/Home";
 import LoginPage from "./Pages/Login";
 import Register from "./Pages/Register";
 import Menu from "./Pages/Menu";
+import LoginAdmin from "./Pages/LoginAdmin";
 import Cart from "./Pages/Cart";
 import Admin from "./Pages/Admin";
 import KitchenStaff from "./Pages/KitchenStaff";
@@ -26,6 +27,7 @@ ReactDOM.createRoot(root).render(
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/login-employee" element={<LoginAdmin />}></Route>
         <Route path="/register" element={<Register />} />
         <Route
           path="/home"
@@ -71,7 +73,6 @@ ReactDOM.createRoot(root).render(
           path="/salesman"
           element={<ProtectedRoute></ProtectedRoute>}
         ></Route>
-        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
   </AppProvider>

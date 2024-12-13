@@ -14,10 +14,11 @@ function LoginPage() {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      const response = await api.post("/user/client/login", {
+      const response = await api.post("/user/staff/login", {
         username,
         password,
       });
+      console.log(response);
       if (!response.data.access_token)
         throw new Error("Wrong username or password");
 
@@ -25,7 +26,13 @@ function LoginPage() {
       localStorage.setItem("role", response.data.role);
       updateToken(response.data.access_token);
       updateRole(response.data.role);
-      navigate("/home");
+      if (role === "manager") {
+        navigate("/admin");
+      } else if (role === "salesman") {
+        navigate("/salesman");
+      } else if (role === "kitchen_staff") {
+        navigate("/kitchenstaff");
+      }
     } catch (error) {
       alert(error);
     }
