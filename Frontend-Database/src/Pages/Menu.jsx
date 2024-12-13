@@ -1,12 +1,28 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../Styles/Menu.css";
 import SlideMenuCustomer from "../Components/SlideMenuCustomer";
 import api from "../api";
 import { useAppContext } from "../../hooks/useAppContext";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Menu() {
   const [selectedMenu, setSelectedMenu] = useState();
   const { addToCart, token } = useAppContext();
+
+  const successNotify = () =>
+    toast.success("🛒 Add to cart successfully!", {
+      position: "top-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+
   useEffect(() => {
     if (token) {
       const fetchMenuData = async () => {
@@ -18,9 +34,17 @@ function Menu() {
 
       fetchMenuData();
     }
-  }, []);
+  }, [token]);
+
+  const handleAddCart = (item) => {
+    console.log("hello");
+    successNotify();
+    addToCart(item);
+  };
+
   return (
     <>
+      <ToastContainer style={{ zIndex: 9999999 }} />
       <SlideMenuCustomer slideNavigate="Menu" />
       <div className="menu-page">
         {/* Header */}
@@ -49,7 +73,7 @@ function Menu() {
                   </div>
                 </div>
                 <div className="add-to-cart-button">
-                  <button onClick={() => addToCart(item)}>
+                  <button onClick={() => handleAddCart(item)}>
                     <div className="default-btn">
                       <svg
                         viewBox="0 0 24 24"
