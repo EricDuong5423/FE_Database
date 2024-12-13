@@ -1,5 +1,141 @@
 @import url("https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+.cart-container {
+  margin-top: 50px;
+  width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+
+.cart-wrapper {
+  background-color: #faf7f0;
+  border-radius: 15px;
+  padding-left: 55px;
+  padding-right: 55px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-empty-announce{
+  font-size: 36px;
+  font-weight: 700;
+}
+
+/* CartMenu */
+
+.cart-menu-list {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.cart-menu-item {
+  background-color: #f0ece4;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+  border-radius: 15px;
+  gap: 50px;
+}
+
+.cart-item-no {
+  font-size: 48px;
+}
+
+.cart-item-detail {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  gap: 20px;
+}
+
+.cart-item-desc {
+  display: flex;
+  width: 400px;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-item-desc h3 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.cart-item-desc div {
+  font-size: 20px;  
+}
+
+.cart-item-desc div span {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.cart-item-quantity {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.cart-item-quantity h3 {
+  color: #00000080;
+  margin-bottom: 20px;
+}
+
+.cart-item-quantity input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  font-size: 20px;
+  width: 70px;
+  aspect-ratio: 1/1;
+  border-radius: 15px;
+  border: 2px black solid;
+}
+
+.cart-item-price {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.cart-item-price h3 {
+  color: #00000080;
+  margin-bottom: 20px;
+}
+
+.cart-item-cancel {
+  font-size: 30px;
+  background-color: transparent;
+  border: 1px black solid;
+  display: flex;
+  justify-content: center;
+  width: 50px;
+  aspect-ratio: 1/1;
+  border-radius: 15px;
+  align-items: center;
+  cursor: pointer;
+
+}
+
+.cart-place-order {
+  background-color: #898121;
+  color: white;
+  padding: 20px;
+  font-size: 36px;
+  border: 0px;
+  cursor: pointer;
+  border-radius: 15px;
+  margin-top: 30px;
+}
+
 /* Title text */
 .title-text {
   margin-top: 20px;

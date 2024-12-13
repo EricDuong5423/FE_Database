@@ -3,15 +3,43 @@ import { createContext, useState } from "react";
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  let localStorageCart = localStorage.getItem("cart");
+  if (localStorageCart) {
+    localStorageCart = JSON.parse(localStorageCart);
+  } else {
+    localStorageCart = [];
+  }
+
+  const [cart, setCart] = useState(localStorageCart);
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [role, setRole] = useState(localStorage.getItem("role") || "");
 
   const addToCart = (item) => {
-    setCart((prevCart) => [...prevCart, item]);
+    let localCart = localStorage.getItem("cart");
+    if (!localCart || localCart.length === 0) {
+      item.quantity = 1;
+      item.totalPrice = item.price;
+      localCart = [item];
+      localStorage.setItem("cart", JSON.stringify(localCart));
+      setCart([...localCart]);
+    } else {
+      const checkCurrentItem = cart.find((cartItem) => cartItem.id === item.id);
+      if (checkCurrentItem) {
+        checkCurrentItem.quantity = (checkCurrentItem.quantity || 0) + 1;
+        checkCurrentItem.totalPrice =
+          checkCurrentItem.quantity * checkCurrentItem.price;
+      } else {
+        item.quantity = 1;
+        item.totalPrice = item.price;
+        cart.push(item);
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      setCart([...cart]);
+    }
   };
 
   const deleteCart = () => {
+    localStorage.setItem("cart", []);
     setCart([]);
   };
 
@@ -32,6 +60,7 @@ export const AppProvider = ({ children }) => {
         cart,
         addToCart,
         deleteCart,
+        setCart,
         token,
         updateToken,
         role,

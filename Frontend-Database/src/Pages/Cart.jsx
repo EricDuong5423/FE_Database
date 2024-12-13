@@ -1,13 +1,110 @@
+import { useAppContext } from "../../hooks/useAppContext";
 import api from "../api";
 import SlideMenuCustomer from "../Components/SlideMenuCustomer";
 import "../Styles/Cart.css";
 
 function Cart() {
+  const { cart, setCart } = useAppContext();
+
+  const handleChangeQuantity = (e, item) => {
+    const findCartItem = cart.find((cartItem) => cartItem.id === item.id);
+    findCartItem.quantity = parseInt(e.target.value);
+    findCartItem.totalPrice = findCartItem.quantity * findCartItem.price;
+    localStorage.setItem("cart", JSON.stringify(cart));
+    setCart([...cart]);
+  };
+
+  const handleCancelProduct = (item) => {
+    const newCart = cart.filter((cartItem) => cartItem.id !== item.id);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+    setCart([...newCart]);
+  };
+
+  const handlePlaceOrder = async (e) => {
+    e.preventDefault();
+    const component = cart.map((item) => {
+      return {
+        dish_id: item.id,
+        quantity: item.quantity,
+      };
+    });
+
+    console.log(component);
+
+    const customerID = 2;
+    const storeID = 10;
+
+    const response = await api.post(
+      `/order/order?customer_id=${customerID}&store_id=${storeID}`,
+      {
+        component: component,
+      }
+    );
+
+    console.log(response);
+
+    setCart([]);
+    localStorage.setItem("cart", []);
+  };
+
   return (
     <>
       <SlideMenuCustomer slideNavigate="Cart"></SlideMenuCustomer>
       <TitleText />
-      <CustomerInfo />
+      {/* <CustomerInfo /> */}
+
+      <div className="cart-container">
+        {cart && cart.length === 0 && (
+          <div className="cart-wrapper">
+            <div className="cart-empty-announce">Cart is Empty</div>
+          </div>
+        )}
+
+        {cart && cart.length > 0 && (
+          <form onSubmit={handlePlaceOrder} className="cart-wrapper">
+            <div className="cart-menu-list">
+              {cart &&
+                cart.map((item) => (
+                  <div key={item.id} className="cart-menu-item">
+                    <div className="cart-item-no">{item.id}</div>
+                    <div className="cart-item-detail">
+                      <div className="cart-item-desc">
+                        <h3>{item.name}</h3>
+                      </div>
+                      <div className="cart-item-quantity">
+                        <h3>Quantity</h3>
+                        <input
+                          type="number"
+                          name="quantity"
+                          id=""
+                          min={1}
+                          defaultValue={item.quantity}
+                          onChange={(e) => handleChangeQuantity(e, item)}
+                        />
+                      </div>
+                      <div className="cart-item-price">
+                        <h3>Price</h3>
+                        <div>{item.totalPrice?.toLocaleString() || 0} VND</div>
+                      </div>
+                    </div>
+                    <div
+                      className="cart-item-cancel"
+                      onClick={() => handleCancelProduct(item)}
+                    >
+                      -
+                    </div>
+                  </div>
+                ))}
+            </div>
+
+            {
+              <button className="cart-place-order" type="submit">
+                Confirm
+              </button>
+            }
+          </form>
+        )}
+      </div>
     </>
   );
 }
