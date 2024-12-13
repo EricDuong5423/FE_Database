@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../Styles/Admin.css";
 import api from "../api";
-const store_id = "FA0DD174-73D7-404D-9AD9-C738934240FA";
+const store_id = "1";
 
 const StaffTable = () => {
   const [selectedStaff, setSelectedStaff] = useState(null); // Lưu thông tin nhân viên được chọn
