@@ -30,22 +30,8 @@ ReactDOM.createRoot(root).render(
         <Route path="/login" element={<LoginPage />} />
         <Route path="/login-employee" element={<LoginAdmin />}></Route>
         <Route path="/register" element={<Register />} />
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <HomePage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/menu"
-          element={
-            <ProtectedRoute>
-              <Menu />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/menu" element={<Menu />} />
         <Route
           path="/cart"
           element={
